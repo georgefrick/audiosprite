@@ -310,6 +310,15 @@ module.exports = function(files) {
             }
             break
 
+					case 'phaserjs':
+					  finalJson.src = json.resources[0]
+            finalJson.data = {audioSprite: {}}
+            for (var sn in json.spritemap) {
+              var spriteInfo = json.spritemap[sn] // "freddie_augustine_6th_01": [ 0.00000000, 5.70961451, false, "aug_6th_01_fre"],						
+							finalJson.data.audioSprite[sn] = [ spriteInfo.start, (spriteInfo.end - spriteInfo.start), false, sn]              
+            }
+            break	
+						
           case 'default': // legacy support
           default:
             finalJson = json
